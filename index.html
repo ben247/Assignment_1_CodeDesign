@@ -5,6 +5,318 @@
 	<title>Ben Whalley - Code Design - Assignment 1</title>
 </head>
 <body>
+	<div>
+		<canvas id="stickMan" width="500px" height="500px"></canvas>
+		<canvas id="stickWoman" width="500px" height="500px"></canvas>
+		<canvas id="pitch" width="400px" height="300px"></canvas>
+		<canvas id="skyline" width="1000px" height="500px"></canvas>
+    </div>
+
+    <script type="text/javascript">
+ 
+//////////////////////////////////// Stick Man ///////////////////////
+
+// Get canvas and assign to cnvs
+	var cnvs = document.getElementById("stickMan");
+// get Canvas Context object
+	var ctx = cnvs.getContext("2d");
+
+//Head
+// (x,y) center, radius, start angle, end angle, anticlockwise
+
+function drawMHead() {
+    ctx.arc(200, 50, 30, 0, 2 * Math.PI);
+    ctx.stroke();
+}
+
+// body
+function drawMBody() {
+    ctx.moveTo(200, 80);
+    ctx.lineTo(200, 180);
+    ctx.stroke();
+}
+
+// arms
+function drawMArms() {
+    ctx.moveTo(200, 80);
+    ctx.lineTo(150, 130);
+    ctx.moveTo(200, 80);
+    ctx.lineTo(250, 130);
+    ctx.stroke();
+}
+
+// legs
+function drawMLegs() {
+    ctx.moveTo(200, 180);
+    ctx.lineTo(150, 280);
+    ctx.moveTo(200, 180);
+    ctx.lineTo(250, 280);
+    ctx.stroke();
+}
+
+// Call all functions required
+drawMHead();
+drawMBody();
+drawMArms();
+drawMLegs();
+
+//////////////////////////////////// Stick Woman ///////////////////////
+
+// Get canvas and assign to cnvs
+var cnvs = document.getElementById("stickWoman");
+// get Canvas Context object
+var ctx = cnvs.getContext("2d");
+
+//Head
+// (x,y) center, radius, start angle, end angle, anticlockwise
+
+function drawWHead() {
+    ctx.arc(250, 50, 30, 0, 2 * Math.PI);
+    ctx.stroke();
+}
+
+// body
+function drawWBody() {
+    ctx.moveTo(250, 80);
+    ctx.lineTo(250, 180);
+    ctx.stroke();
+}
+
+// arms
+function drawWArms() {
+    ctx.moveTo(250, 80);
+    ctx.lineTo(200, 130);
+    ctx.moveTo(250, 80);
+    ctx.lineTo(300, 130);
+    ctx.stroke();
+}
+
+// Skirt
+function drawWSkirt() {
+    ctx.moveTo(250, 180);
+    ctx.lineTo(210, 240);
+    ctx.lineTo(290, 240);
+    ctx.lineTo(250, 180);
+    ctx.stroke();
+}
+
+// legs
+function drawWLegs() {
+    ctx.moveTo(220, 240);
+    ctx.lineTo(220, 340);
+    ctx.moveTo(280, 240);
+    ctx.lineTo(280, 340);
+    ctx.stroke();
+}
+
+// Call all functions required
+drawWHead();
+drawWBody();
+drawWArms();
+drawWLegs();
+drawWSkirt();
+
+//////////////////////////////////// Pitch ///////////////////////
+
+// Get canvas and assign to cnvs
+var cnvs = document.getElementById("pitch");
+// get Canvas Context object
+var ctx = cnvs.getContext("2d");
+
+function drawCircle(x, y, r, m1, m2){
+    ctx.beginPath();
+    ctx.arc(x, y, r, m1, m2);
+    ctx.stroke();
+    }
+
+function drawRectangle(x, y, w, h){
+    ctx.rect(x, y, w, h);
+    ctx.stroke();
+    }
+
+function drawLine(mx, my, lx, ly){
+    ctx.beginPath();
+    ctx.moveTo(mx,my);
+    ctx.lineTo(lx,ly);
+    ctx.stroke();
+    }
+
+// Call all functions and pass coordinates
+
+// Center circle
+// (x,y) center, radius, start angle, end angle, anticlockwise
+drawCircle(200, 150, 50, 0, 2*Math.PI);
+
+// Corner Arcs
+// (x,y) center, radius, start angle, end angle, anticlockwise
+drawCircle(10, 10, 10, 0*Math.PI, 0.5*Math.PI);
+drawCircle(390, 10, 10, 0.5*Math.PI, 1*Math.PI);
+drawCircle(390, 290, 10, 1*Math.PI, 1.5*Math.PI);
+drawCircle(10, 290, 10, 1.5*Math.PI, 0*Math.PI);
+
+// Left Half Circle
+// (x,y) center, radius, start angle, end angle, anticlockwise
+drawCircle(80, 150, 50, 1.5*Math.PI, 0.5*Math.PI);
+
+// Right Half Circle
+// (x,y) center, radius, start angle, end angle, anticlockwise
+drawCircle(320, 150, 50, 0.5*Math.PI, 1.5*Math.PI);
+
+// Center Spot
+// (x,y) center, radius, start angle, end angle, anticlockwise
+drawCircle(200, 150, 2, 0, 2*Math.PI);
+
+// Left Spot
+// (x,y) center, radius, start angle, end angle, anticlockwise
+drawCircle(345, 150, 2, 0, 2*Math.PI);
+
+// Right Spot
+// (x,y) center, radius, start angle, end angle, anticlockwise
+drawCircle(55, 150, 2, 0, 2*Math.PI);
+
+// Pitch
+// (x, y, width, height)
+drawRectangle(10, 10, 380, 280);
+
+// Center line
+drawLine(200, 10, 200, 290);
+
+// Left Penalty Area
+// (x, y, width, height)
+drawRectangle(10, 50, 70, 200);
+
+// Left 6-yard box
+drawRectangle(10, 115, 25, 70);
+
+// Left Goal
+drawRectangle(5, 125, 5, 50);
+
+// Right Penalty Area
+// (x, y, width, height)
+drawRectangle(320, 50, 70, 200);
+
+// Right 6-yard box
+drawRectangle(365, 115, 25, 70);
+
+// Right Goal
+drawRectangle(390, 125, 5, 50);
+
+// Temp
+// Border
+// (x, y, width, height)
+//drawRectangle(0, 0, 400, 300);
+
+// Horizontal middle line
+//drawLine(0,150,400,150);
+
+//////////////////////////////////// Skyline ///////////////////////
+
+// Get canvas and assign to cnvs
+var cnvs = document.getElementById("skyline");
+// get Canvas Context object
+var ctx = cnvs.getContext("2d");
+
+function drawCircle(x, y, r, m1, m2){
+    ctx.beginPath();
+    ctx.arc(x, y, r, m1, m2);
+    ctx.stroke();
+    }
+
+function drawFilledRectangle(x, y, w, h){
+    ctx.fillRect(x, y, w, h);
+    }
+
+function drawLine(mx, my, lx, ly){
+    ctx.beginPath();
+    ctx.moveTo(mx, my);
+    ctx.lineTo(lx, ly);
+    ctx.stroke();
+    }
+
+// Call all functions and pass coordinates
+
+//Westminster
+// (x, y, width, height)
+drawFilledRectangle(0, 400, 250, 100);
+drawFilledRectangle(50, 370, 20, 130);
+drawFilledRectangle(120, 370, 20, 130);
+drawFilledRectangle(180, 370, 20, 130);
+drawFilledRectangle(250, 300, 50, 200);
+drawLine(51, 370, 51, 365);
+drawLine(69, 370, 69, 365);
+drawLine(121, 370, 121, 365);
+drawLine(139, 370, 139, 365);
+
+
+// Center circle
+// (x,y) center, radius, start angle, end angle, anticlockwise
+//drawCircle(200, 150, 50, 0, 2*Math.PI);
+
+// Corner Arcs
+// (x,y) center, radius, start angle, end angle, anticlockwise
+//drawCircle(10, 10, 10, 0*Math.PI, 0.5*Math.PI);
+//drawCircle(390, 10, 10, 0.5*Math.PI, 1*Math.PI);
+//drawCircle(390, 290, 10, 1*Math.PI, 1.5*Math.PI);
+//drawCircle(10, 290, 10, 1.5*Math.PI, 0*Math.PI);
+
+// Left Half Circle
+// (x,y) center, radius, start angle, end angle, anticlockwise
+//drawCircle(80, 150, 50, 1.5*Math.PI, 0.5*Math.PI);
+
+// Right Half Circle
+// (x,y) center, radius, start angle, end angle, anticlockwise
+//drawCircle(320, 150, 50, 0.5*Math.PI, 1.5*Math.PI);
+
+// Center Spot
+// (x,y) center, radius, start angle, end angle, anticlockwise
+//drawCircle(200, 150, 2, 0, 2*Math.PI);
+
+// Left Spot
+// (x,y) center, radius, start angle, end angle, anticlockwise
+//drawCircle(345, 150, 2, 0, 2*Math.PI);
+
+// Right Spot
+// (x,y) center, radius, start angle, end angle, anticlockwise
+//drawCircle(55, 150, 2, 0, 2*Math.PI);
+
+// Pitch
+// (x, y, width, height)
+//drawRectangle(10,10,380,280);
+
+// Center line
+//drawLine(200,10,200,290);
+
+// Left Penalty Area
+// (x, y, width, height)
+//drawRectangle(10,50,70,200);
+
+// Left 6-yard box
+//drawRectangle(10,115,25,70);
+
+// Left Goal
+//drawRectangle(5,125,5,50);
+
+// Right Penalty Area
+// (x, y, width, height)
+//drawRectangle(320,50,70,200);
+
+// Right 6-yard box
+//drawRectangle(365,115,25,70);
+
+// Right Goal
+//drawRectangle(390,125,5,50);
+
+// Temp
+// Border
+// (x, y, width, height)
+drawRectangle(0, 0, 1000, 500);
+
+// Horizontal middle line
+drawLine(0,250,1000,250);
+
+// Verticle middle line
+drawLine(500,0,500,500);
+    </script>
 	
 </body>
 </html>
