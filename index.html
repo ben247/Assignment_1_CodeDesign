@@ -34,7 +34,6 @@
 
     backgroundGrd();
 
-
     function drawCircle(x, y, r, m1, m2) {
         ctx.beginPath();
         ctx.arc(x, y, r, m1, m2);
@@ -42,17 +41,40 @@
         ctx.stroke();
     }
 
-    function drawFilledCircleWhite(x, y, r, m1, m2) {
-        ctx.beginPath();
-        ctx.fillStyle = "white";
-        ctx.arc(x, y, r, m1, m2);
-        ctx.fill();
-    }
+    drawCircle(550, 290, 200, 0, 2 * Math.PI);
 
     function drawFilledRectangle(x, y, w, h) {
-        ctx.fillStyle = "black";
+        ctx.fillStyle = 'black';
         ctx.fillRect(x, y, w, h);
     }
+    
+    drawFilledRectangle(0, 400, 250, 100);
+    drawFilledRectangle(50, 370, 20, 130);
+    drawFilledRectangle(120, 370, 20, 130);
+    drawFilledRectangle(180, 370, 20, 130);
+    drawFilledRectangle(250, 300, 50, 200);
+    drawFilledRectangle(245, 250, 60, 60);
+
+// Lights
+    function drawLights (x, y, w, h) {
+        ctx.fillStyle = 'white';
+        ctx.fillRect(x, y, w, h);
+    }
+
+// Is there a way to loop through and repeat?
+    drawLights(10, 420, 10, 30);
+    drawLights(30, 420, 10, 30);
+    drawLights(50, 420, 10, 30);
+    drawLights(70, 420, 10, 30);
+    drawLights(90, 420, 10, 30);
+    drawLights(90, 420, 10, 30);
+    drawLights(110, 420, 10, 30);
+    drawLights(130, 420, 10, 30);
+    drawLights(150, 420, 10, 30);
+    drawLights(170, 420, 10, 30);
+    drawLights(190, 420, 10, 30);
+    drawLights(210, 420, 10, 30);
+    drawLights(230, 420, 10, 30);
 
     function drawLine(mx, my, lx, ly) {
         ctx.beginPath();
@@ -61,6 +83,12 @@
         ctx.stroke();
     }
 
+    drawLine(51, 370, 51, 365);
+    drawLine(69, 370, 69, 365);
+    drawLine(121, 370, 121, 365);
+    drawLine(139, 370, 139, 365);
+    drawLine(181, 370, 181, 365);
+    drawLine(199, 370, 199, 365);
 
     // Top of Big Ben
     function drawFilledLine() {
@@ -77,6 +105,7 @@
         ctx.fillStyle = "black";
         ctx.fill();
     }
+
     drawFilledLine();
 
     function drawEyeTower(mx, my, lx, ly) {
@@ -86,31 +115,10 @@
         ctx.stroke();
     }
 
-
-    // Call all functions and pass coordinates
-
-    // Westminster
-    // (x, y, width, height)
-    drawFilledRectangle(0, 400, 250, 100);
-    drawFilledRectangle(50, 370, 20, 130);
-    drawFilledRectangle(120, 370, 20, 130);
-    drawFilledRectangle(180, 370, 20, 130);
-    drawFilledRectangle(250, 300, 50, 200);
-    drawLine(51, 370, 51, 365);
-    drawLine(69, 370, 69, 365);
-    drawLine(121, 370, 121, 365);
-    drawLine(139, 370, 139, 365);
-    drawLine(181, 370, 181, 365);
-    drawLine(199, 370, 199, 365);
-    // Clock face
-    drawFilledRectangle(245, 250, 60, 60);
-    // (x,y) center, radius, start angle, end angle, anticlockwise
-    drawFilledCircleWhite(275, 280, 22, 0, 2 * Math.PI);
-
-    // London Eye
-    drawCircle(550, 290, 200, 0, 2 * Math.PI);
     drawEyeTower(450, 499, 550, 290);
     drawEyeTower(650, 499, 550, 290);
+
+
     </script>
 </body>
 
