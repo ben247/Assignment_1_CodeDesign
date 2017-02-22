@@ -110,6 +110,7 @@
 
     function drawEyeTower(mx, my, lx, ly) {
         ctx.beginPath();
+        ctx.lineCap = "round";
         ctx.moveTo(mx, my);
         ctx.lineTo(lx, ly);
         ctx.stroke();
