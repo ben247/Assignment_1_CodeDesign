@@ -18,21 +18,37 @@
     // get Canvas Context object
     var ctx = cnvs.getContext("2d");
 
+/////////////////////// Rotation \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
+var carousel = new Image();
 
-    // Create gradient
-    function backgroundGrd() {
-        grd = ctx.createLinearGradient(150, 0, 150, 300);
-        // Add colors
-        grd.addColorStop(0.000, 'rgba(0, 0, 0, 1.000)');
-        grd.addColorStop(0.134, 'rgba(99, 19, 109, 1.000)');
-        grd.addColorStop(1.000, 'rgba(237, 166, 26, 1.000)');
-        // Fill with gradient
-        ctx.fillStyle = grd;
-        ctx.fillRect(0, 0, 1000, 500);
-    }
+function init (){
+    carousel.src = 'carousel.png'; // Replace with image of carousel.
+    window.requestAnimationFrame(draw); // Tells browswer it wants to create an animation and that the animation will be updated before the following frame. (draw) is the callback.
+}
 
-    backgroundGrd();
+function draw(){
+    ctx.globalCompositeOperation = 'destination-over';// The 'destination-over' string identifies which of the composisting operations should be used. For 'destination-over', each new shape is drawn behind.
+    ctx.clearRect(0,0,1000,500);// This method clears the pixels within the specific shape.
+    ctx.save();// Saves the state of the canvas by pushing the current state onto a stack.
+    ctx.translate(550,290);// Adds a translation transformation by moving the canvas and its origin x horizontally and y vertically on the grid.
+    var time = new Date(); //
+    //roating the canvas by 4 degree per second
+    ctx.rotate(((15 * Math.PI) / 60) * time.getSeconds() + ((15 * Math.PI) / 60000) * time.getMilliseconds());
+
+    //moves canvas top left to the centre point of the rotation x 105 to , y 0 to position carousel on the circle
+    ctx.translate(110, 0);
+    //plotting carousel
+    ctx.drawImage(carousel, -340, -87);
+    ctx.drawImage(carousel, -350, -22);
+    ctx.drawImage(carousel, -285, -182);
+    ctx.drawImage(carousel, -180, 198);
+    ctx.drawImage(carousel, -115, 63);
+    ctx.drawImage(carousel, -171, 38);
+    ctx.drawImage(carousel, -170, -61);
+    ctx.drawImage(carousel, -191, -12);
+    //restore save from earlier
+    ctx.restore();
 
     function drawCircle(x, y, r, m1, m2) {
         ctx.beginPath();
@@ -108,6 +124,7 @@
 
     drawFilledLine();
 
+// Eye towers
     function drawEyeTower(mx, my, lx, ly) {
         ctx.beginPath();
         ctx.lineCap = "round";
@@ -119,8 +136,34 @@
     drawEyeTower(450, 499, 550, 290);
     drawEyeTower(650, 499, 550, 290);
 
+     /////////////////////// Create gradient background \\\\\\\\\\
+    function backgroundGrd() {
+        grd = ctx.createLinearGradient(150, 0, 150, 300);
+        // Add colors
+        grd.addColorStop(0.000, 'rgba(0, 0, 0, 1.000)');
+        grd.addColorStop(0.134, 'rgba(99, 19, 109, 1.000)');
+        grd.addColorStop(1.000, 'rgba(237, 166, 26, 1.000)');
+        // Fill with gradient
+        ctx.fillStyle = grd;
+        ctx.fillRect(0, 0, 1000, 500);
+    }
+
+    backgroundGrd();
+
+        window.requestAnimationFrame(draw);
+    }
+
+init();
+
+
 
     </script>
 </body>
 
 </html>
+
+<!-- Refs
+https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation
+https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/clearRect
+https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/save
+https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/translate
